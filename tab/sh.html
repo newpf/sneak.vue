@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div class="root">
+        {{val}}
+        <ul>
+            <li v-for = "val,key in arr">{{val}}</li>
+        </ul>
+        <input type="text" v-model = "val2">
+        <p>{{val2}}</p>
+    </div>
+</body>
+<script>
+    new Vue({
+        el:'.root',
+        data:{
+            val:'凉凉',
+            arr:['1','2','3','4'],
+            val2:'你好厉害呦'
+        }
+    })
+</script>
+</html>
