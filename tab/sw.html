@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div class="root">
+        <ul>
+            <li v-for = "(val,key) in arr ">{{val}}:{{key}}</li>
+        </ul>
+        <br />
+        <ul>
+            <li v-for = "(val,key) in obj">{{val}}</li>
+        </ul>
+    </div>
+</body>
+<script>
+    let v = new Vue({
+        el:'.root',
+        data:{
+            arr:[],
+            obj:{
+                n1:'1',
+                n2:'2',
+                n3:'3'
+            }
+        }
+    })
+    setTimeout(function(){
+        v.arr = ['new','p','f']
+    },1000)
+</script>
+</html>

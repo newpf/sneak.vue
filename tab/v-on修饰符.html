@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div class="root">
+        <input type="text" @keyup.13 = 'keyup'>
+        <ul>
+            <li v-for = "(val,key) in arr">{{val}}</li>
+        </ul>
+        <div @click = "fn1">
+            div1
+            <div @click.stop = "fn2('aaa')" @mousedown.prevent>div2</div>
+        </div>
+    </div>
+</body>
+<script>
+    let v = new Vue({
+        el:'.root',
+        data:{
+            arr:[]
+        },
+        methods:{
+            keyup(ev){
+                this.arr.push(ev.target.value);
+                ev.target.value = '';
+            },
+            fn1(){
+                alert(1111)
+            },
+            fn2(val){
+                alert(val)
+            }
+        }
+    })
+</script>
+</html>

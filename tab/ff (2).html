@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div class="root">
+        {{val}}
+        <div v-if = "onOff">div</div>
+        <div v-else>vid</div>
+
+        <div v-if = "color == 'red'">red</div>
+        <div v-else-if = "color== 'green'">green</div>
+        <div v-else>yellow</div>
+    </div>
+</body>
+<script>
+        new Vue({
+            el:'.root',
+            data:{
+                val:'你好',
+                onOff:true,
+                color:'xx'
+            }
+        })
+</script>
+</html>

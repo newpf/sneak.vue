@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div class="root">
+        <button @click = "changeNum">按钮</button>
+    </div>
+    <ul>
+        <li v-for = "(val,key) in arr ">{{val}}</li>
+    </ul>
+</body>
+<script>
+    let v = new Vue({
+        el:'.root',
+        data:{
+            arr:[],
+            num:0
+        },
+        methods:{
+            changeNum(){
+                let {num} = this;
+                num ++
+                this.num = num;
+                this.arr.push(num);
+            }
+        }
+    })
+</script>
+</html>
