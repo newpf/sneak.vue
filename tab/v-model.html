@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div class="root">
+        <input type="text" v-model = "val">
+        {{val}}{{arr}}
+        <input type="text" type = "checkbox" v-for = "(val,key) in arr">
+        <input type="radio" value="0" v-model = "val2">
+        <input type="radio" value="1" v-model = "val2">
+        {{arr3[val2]}}
+        <select v-model = "selected">
+            <option disabled value="">请选择</option>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+        {{selected}}
+        <select v-model = "selected2" multiple>
+            <option disabled value="">请选择</option>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+        {{selected2}}
+        <input v-model.lazy = "val">
+        {{val}}
+        <input v-model.lazy.number = "val" type="number">
+        {{val}}
+    </div>
+</body>
+<script>
+    
+</script>
+</html>
