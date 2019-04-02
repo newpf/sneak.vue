@@ -11,9 +11,9 @@
     <div class="root">
         <input type="text" v-model = "val">
         {{val}}{{arr}}
-        <input type="text" type = "checkbox" v-for = "(val,key) in arr">
-        <input type="radio" value="0" v-model = "val2">
-        <input type="radio" value="1" v-model = "val2">
+        <input type = "checkbox" v-for = "(val,key) in arr"  v-model="arr[key]"/>
+        <input type="radio" value="0" v-model = "val2"/>
+        <input type="radio" value="1" v-model = "val2"/>
         {{arr3[val2]}}
         <select v-model = "selected">
             <option disabled value="">请选择</option>
@@ -36,6 +36,16 @@
     </div>
 </body>
 <script>
-    
+    let v = new Vue({
+        el:'.root',
+        data:{
+            val:'你好',
+            arr:[true,false],
+            val2:'0',
+            arr3:['男','女'],
+            selected:'',
+            selected2:[]
+        }
+    })
 </script>
 </html>
