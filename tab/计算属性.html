@@ -10,14 +10,33 @@
 <body>
     <div class="root">
         <input type="text" v-model = "val"/>
+        这是计算属性:
+        {{getVal}}
+        {{getVal}}
+        {{getVal}}
+
+        这是函数:
+        {{change()}}
+        {{change()}}
+        {{change()}}
+
     </div>
 </body>
 <script>
     let v = new Vue({
         el:'.root',
         data:{
-            val:'ab',
-            
+            val:'ab'
+        },
+        methods:{
+            change(ev){
+                return this.val.replace(/\d+/g,'')
+            }
+        },
+        computed:{
+            gitVal(){
+                return this.val.replace(/\d+/g,'')
+            }
         }
     })
 </script>
