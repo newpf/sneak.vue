@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src = "../vue.js"></script>
+</head>
+<body>
+    <div class="root">
+        <input type="text" v-model = "val">
+        计算属性:{{getVal}} || watch:{{val}}
+    </div>
+</body>
+<script>
+    new Vue({
+        el:".root",
+        data:{
+            val:"sb"
+        },
+        computed:{
+            getVal(){
+                return this.val.replace(/\d+/g,'')
+            }
+        },
+        watch:{
+            val:function(){
+                this.val = this.val.replace(/\+/g,'')
+            }
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../课件/2018-3-12/2018-3-12/2018-6-19/css/index.css">
+
+</head>
+<body>
+    <div class="todoapp">
+        <header class="header">
+            <h1>todos</h1>
+            <input type="text" class="new-todo" placeholder="请输入内容" v-model = "val" @keyup.13.trim = "keyup">
+        </header>
+        <section class="main">
+            <input type="checkbox" class="toggle-all" :checkbox = "arr.lenth?arr.every(e=>e.checked):false " @click = "allFn" >
+            <ul class="todo-list">
+                <li :class = "val.checked?'completed':''" v-for = "(val,key) in arr">
+                    <div class="view">
+                        <input type="checkbox" class="toggle" v-model = "val.checked" >
+                        <label>{{val.txt}}</label>
+                        <button class="destroy" @click = "dele(val.id)"></button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </div>
+</body>
+<script>
+    function getItem(){
+        return JSON.parse(localStorage.getItem('data'))||[{txt:'钮朋飞大帅比',id:0,checked:true},{txt:'呵呵',id:1,checked:false}]
+    }
+    new Vue({
+        el:".todoapp",
+        data:{
+            arr:getItem(),
+            val:''
+        },
+        methods:{
+            keyup(){
+                this.arr.push({
+                    txt:this.val,
+                    id:+new Date,
+                    checked:false
+                });
+                this.val = '';
+            },
+            dele(id){
+                this.arr = this.arr.filter(e=>e.id != id);
+            },
+            allFn(ev){
+                this.arr.forEach(e => {
+                    e.checked = ev.target.checked
+                });
+            }
+        },
+        watch:{
+            arr:{
+                handler(val,oldVal) {
+                    localStorage.setItem('data',JSON.stringify(this.arr))
+                },
+                deep:true
+            }
+        },
+    })
+</script>
+</html>
