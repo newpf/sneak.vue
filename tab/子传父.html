@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue_class.js"></script>
+</head>
+<body>
+    <div class="app">
+         <ppa :pnum = "num" @changnum = "changNum" v2 = "1234"></ppa> <!-- changnum 定义一个父级时间函数 -->
+    </div>
+</body>
+<script>
+    let ppa = {
+        props:{
+            pnum:Number,
+            v2:String
+        },
+        template:`<div>
+            <button @click = "fn(99)">点击</button>
+            <p>{{pnum}}</p>
+            <p>{{v2}}</p>
+        </div>`,
+        data(){
+            return{
+                val:'111'
+            }
+        },
+        methods:{
+            fn(n){
+                this.$emit('changnum',n)//@emit 子级调用
+            }
+        },
+    }
+    new Vue({
+        el:'.app',
+        components:{
+            ppa
+        },
+        data:{
+            num:0
+        },
+        methods:{
+            changNum(Number){
+                alert(Number)
+                this.num ++
+            }
+        }
+    })
+</script>
+</html>

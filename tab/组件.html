@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue_class.js"></script>
+</head>
+<body>
+    <div class="app">
+        <my-app></my-app>
+        <my-ppa></my-ppa>
+    </div>
+</body>
+<script>
+    Vue.component('my-app',{
+        template:'<div>你好</div>'
+    });
+    let myppa = {
+        template:`<div>
+            <div @click = "fn">呵呵,{{val}}</div>
+            <p>5432535</p>
+        </div>
+        `
+        ,
+        data(){
+            return{
+                val:'呵呵'
+            }
+        },
+        methods:{
+            fn(){
+                alert(1111)
+            }
+        }
+    }
+    new Vue({
+            el:'.app',
+            components:{
+                'my-ppa':myppa
+            }
+        })
+</script>
+</html>
