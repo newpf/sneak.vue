@@ -3,9 +3,15 @@
         <section class="todoapp">
             <div>
                 <myheader></myheader>
-                <section class="main">
-                  <input class="toggle-all" type="checkbox" :checked="all" @click="changell">
-                  <List :aa="newArr" @delefn="deleFn" @pdb="parentDB" @cval="cval"></List>
+                <section  class="main">
+                  <input  class="toggle-all"
+                          type="checkbox" 
+                          :checked="all" 
+                          @click="changell">
+                  <List :aa="newArr" 
+                        @delefn="deleFn" 
+                        @pdb="parentDB" 
+                        @cval="cval"></List>
                 </section>
                 <MFooter :num="num" @cafn="caFn"></MFooter>
             </div>
@@ -18,7 +24,9 @@ import List from './components/List'
 import MFooter from './components/footer'
 import './assets/css/index.css';
 export default {
+    //neme组件名称
   name: 'app',
+    //data放数据,或者组件
   data(){
     return{
       arr:[
@@ -28,6 +36,7 @@ export default {
       checkedall:'all'
     }
   },
+    //上中下内容标签
   components: {
     Myheader,
     List,
@@ -51,5 +60,18 @@ export default {
     //状态筛选(未完成,已完成)
     
   },
+  
+  computed:{
+    //监听all,当它发生变化的时候执行newArr
+    newArr(){
+      return this.arr.filter(e=>{
+        switch (this.checkedall) {
+          case 'all':
+              return e;
+            break;
+        }
+      })
+    }
+  }
 }
 </script>

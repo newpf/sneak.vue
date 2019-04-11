@@ -1,10 +1,17 @@
 <template>
     <ul class="todo-list">
-        <li :class="dbclass(val.checked,val.editing)" v-for="(val,key) in aa">
+        <li :class="dbclass(val.checked,val.editing)" 
+            v-for="(val,key) in aa"
+            >
             <div class="view">
-                <input class="toggle" type="checkbox" v-model="val.checked">
+                <input  class="toggle"
+                        type="checkbox"
+                        v-model="val.checked">
                 <label @dblclick="db(val.id,val.txt,$event)">{{val.txt}}</label>
-                <button class="destroy" @click="dele(val.id)"></button>
+                <button 
+                        class="destroy" 
+                        @click="dele(val.id)"
+                ></button>
             </div>
             <input  class="edit" 
                     v-model="parentVal"
@@ -21,6 +28,21 @@ export default {
     props:{
         aa:Array
     },
-    
+    data(){
+        return {
+            parentVal:''
+        } 
+    },
+    methods:{  
+            //arr label 里面的内容
+        dbclass(checked,editing){
+            let sClass = '';
+            sClass = checked?'completed':'';
+            if(editing){
+                sClass = sClass + ' editing'
+            }
+            return sClass;
+        },
+    }
 }
 </script>
