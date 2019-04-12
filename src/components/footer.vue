@@ -30,6 +30,12 @@ export default {
            all:'all'
        }
    },
+   methods:{
+       checkedAll(newAll){
+           this.all = newAll;
+           this.$emit('cafn',newAll)
+       }
+   },
    
     
 }

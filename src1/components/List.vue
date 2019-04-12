@@ -1,5 +1,4 @@
 <template >
-    
     <ul class="todo-list">     
         <li 
             :class="dbclass(val.checked,val.editing)" 
@@ -45,7 +44,6 @@ export default {
             this.$emit('delefn',id);
         },
         db(id,val,ev){
-          
            this.$emit('pdb',id,true);
            this.parentVal = val;
            setTimeout(() => {

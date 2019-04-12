@@ -34,6 +34,16 @@ export default {
         } 
     },
     methods:{  
+        dele(id){
+            this.$emit('delefn',id)
+        },
+        db(id,val,ev){
+            this.$emit('pdb',id,true);
+            this.parentVal = val;
+            setTimeout(() => {
+                ev.target.parentNode.nextElementSibling.focus();   
+            });
+        },
             //arr label 里面的内容
         dbclass(checked,editing){
             let sClass = '';
@@ -43,6 +53,14 @@ export default {
             }
             return sClass;
         },
+        blur(id,val){
+            //操作父级数据
+            if(this.parentVal && val!=this.parentVal){
+                this.$emit('cval',id,this.parentVal);
+            }else{
+                this.$emit('pdb',id,false)
+            }
+        }
     }
 }
 </script>
