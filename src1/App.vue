@@ -1,119 +1,38 @@
 <template>
-  <div>
-    <section class="todoapp">
-        <div>
-            <myheader 
-              @addarr="addarr"
-            ></myheader>
-            <section class="main">
-                <input 
-                  class="toggle-all" 
-                  type="checkbox"
-                  :checked="all"
-                  @click="changall"
-                />
-                <List 
-                  :aa="newArr" 
-                  @delefn="deleFn"
-                  @pdb="parentDB"
-                  @cval="cval"
-                ></List>
-                
-            </section>
-            <MFooter :num="num" @cafn="caFn"></MFooter>
-        </div>
-    </section>
+  <div id="app">
+    <router-link to="/" tag="button">去首页</router-link>
+    <router-link :to="{path:'/about',params:{id:321}}" tag="button">去关于</router-link>
+    <router-link to="/Bar/1" tag="button">去Bar</router-link>
+     <router-link to="/Bar/2" tag="button">去Bar</router-link>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Myheader from './components/myheader'
-import List from './components/List'
-import MFooter from './components/footer'
-import './assets/css/index.css';
+  /*
+    //name:'Bar'
+      加了<router-view>路由的组件才能显示
+    
+    1.import Router from 'vue-router'
+    2.import Vue from 'vue'
+    3.Vue.use(Router)
+    4.const routes = [
+        {
+          path:'/',
+          component:App,
+          name:'App'
+        }
+      ]
+  
+    5.new Router({routes,mode:'history'})
+      mode:'history'启用H5  history
 
-export default {
-  name: 'app',
-  data(){
-    return {
-      arr:[
-        {id:0,checked:false,txt:'哈哈',editing:false},
-        {id:1,checked:false,txt:'哗哗',editing:false}
-      ],
-      checkedall:'all'
-    }
-  },
-  components: {
-    Myheader,
-    List,
-    MFooter
-  },
-  methods:{
-    //添加数据
-    addarr(newData){
-      this.arr.unshift(newData);
-    },
-    //控制全选
-    changall(ev){
-      this.arr.forEach(e=>{
-        e.checked = ev.target.checked
-      });
-    },  
-    //删除数据
-    deleFn(id){
-      this.arr = this.arr.filter(e=>e.id!=id);
-    },
-    //修改全部、未完成、已完成状态
-    caFn(newAll){
-      this.checkedall = newAll;
-    },
-    parentDB(id,edit){
-      this.arr = this.arr.map(e=>{
-        if(id == e.id){
-          e.editing = edit;
-        }
-        return e;
-      });
-    },
-    cval(id,val){
-      this.arr = this.arr.map(e=>{
-          if(id == e.id){
-            e.txt = val;
-            e.editing = false;
-          }
-          return e;
-        });
-      }
-  },
-  computed:{
-    all(){
-      return this.arr.length?this.arr.every(e=>e.checked):false;
-    },
-    //监听this.arr,当它发生变化的时候执行num
-    num(){
-      return this.arr.filter(e=>!e.checked).length;
-    },
-    //监听checkedall，当它发生变化的时候执行newArr
-    newArr(){
-      return this.arr.filter(e=>{
-        switch (this.checkedall) {
-          case 'all':
-              return e;
-            break;
-          case 'active':
-              return !e.checked;
-            break;
-          case 'completed':
-              return e.checked;
-            break;
-          default:
-            return e;
-            break;
-        }
-      });
-    }
-  }
-}
+
+  */
 </script>
-
+<style>
+.router-link-exact-active{
+  background:yellow
+}
+</style>
 

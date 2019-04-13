@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
+import App from './shehui/content/content'
+import router from './shehui/router'
 
 Vue.config.productionTip = false
 
