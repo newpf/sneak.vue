@@ -1,38 +1,45 @@
 <template>
   <div id="app">
-    <router-link to="/" tag="button">去首页</router-link>
-    <router-link :to="{path:'/about',params:{id:321}}" tag="button">去关于</router-link>
-    <router-link to="/Bar/1" tag="button">去Bar</router-link>
-     <router-link to="/Bar/2" tag="button">去Bar</router-link>
-    <router-view></router-view>
+    <button @click="add">点击</button>
+    <p>{{num}}</p>
   </div>
 </template>
 
 <script>
-  /*
-    //name:'Bar'
-      加了<router-view>路由的组件才能显示
-    
-    1.import Router from 'vue-router'
-    2.import Vue from 'vue'
-    3.Vue.use(Router)
-    4.const routes = [
-        {
-          path:'/',
-          component:App,
-          name:'App'
-        }
-      ]
+/*
+  store可以用computed去监听
+
+
+*/
+import { mapMutations } from 'vuex'
+export default {
+  name: 'app',
+  methods:{
+    ...mapMutations([
+      'add'
+    ]),
+    // fn(){
+    //   // this.$store.commit('add');
+    //   // this.add();
+    // }
+  },
+  computed:{
+    num(){
+      let {count} = this.$store.state;
+      return count < 10?'0'+ count:''+count
+    }
+  }
   
-    5.new Router({routes,mode:'history'})
-      mode:'history'启用H5  history
-
-
-  */
+}
 </script>
+
 <style>
-.router-link-exact-active{
-  background:yellow
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 </style>
-

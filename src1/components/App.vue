@@ -1,11 +1,11 @@
 <template>
     <div>
-        <h2>关于我们</h2>
-        {{$route.params.id}}
+        <router-view></router-view>
     </div>
 </template>
+
 <script>
 export default {
-    name:"A"
+    name:"App"
 }
 </script>
