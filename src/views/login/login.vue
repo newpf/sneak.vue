@@ -1,6 +1,8 @@
 <template>
-    <div>
-        <div class="login-wrap" v-show="showLogin">
+    <div id='app' >
+        <img :src="imgUrl">
+        <div class="login-wrap" >      
+            <!-- v-show="showLogin" -->
             <h3>登录</h3>
             <p v-show="showTishi">{{tishi}}</p>
             <input type="text" placeholder="请输入用户名" v-model="username">
@@ -19,29 +21,54 @@
         </div>
     </div>
 </template>
-
 <style>
-    .login-wrap{text-align:center;}
-    input{display:block; width:250px; height:40px; line-height:40px; margin:0 auto; margin-bottom: 10px; outline:none; border:1px solid #888; padding:10px; box-sizing:border-box;}
-    p{color:red;}
-    button{display:block; width:250px; height:40px; line-height: 40px; margin:0 auto; border:none; background-color:#41b883; color:#fff; font-size:16px; margin-bottom:5px;}
-    span{cursor:pointer;}
-    span:hover{color:#41b883;}
-</style>
-
-<script>
-    export default{
-        data(){
-            return{
-                showLogin: true,
-                showRegister: false,
-                showTishi: false,
-                tishi: '',
-                username: '',
-                password: '',
-                newUsername: '',
-                newPassword: ''
-            }
-        }
+    #app{
+        text-align: center;
+        margin-top:100px; 
     }
+    input{
+        display:block; 
+        width:250px; 
+        height:40px; 
+        line-height:40px; 
+        margin:0 auto; 
+        margin-bottom: 10px; 
+        outline:none; 
+        border:1px solid #888;
+        padding:10px; 
+        box-sizing:border-box;
+    }
+    p{
+        color:red;
+    }
+    button{
+        display:block; 
+        width:250px; 
+        height:40px; 
+        line-height: 40px; 
+        margin:0 auto; 
+        border:none; 
+        background-color:#41b883; 
+        color:#fff; 
+        font-size:16px; 
+        margin-bottom:5px;
+    }
+    span{
+        cursor: pointer;
+    }
+    span:hover{
+        color: #41b883;
+    }
+</style>
+<script>
+export default {
+    data(){
+        return{
+            imgUrl:require("@/assets/logo.png")
+        }
+    },
+}
 </script>
+
+
+
